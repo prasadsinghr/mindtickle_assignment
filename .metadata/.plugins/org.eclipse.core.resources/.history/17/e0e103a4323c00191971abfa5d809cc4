@@ -1,0 +1,9 @@
+package mt.qa.util;
+
+
+import mt.qa.base.TestBase;
+
+public class TestUtil extends TestBase
+{
+
+}

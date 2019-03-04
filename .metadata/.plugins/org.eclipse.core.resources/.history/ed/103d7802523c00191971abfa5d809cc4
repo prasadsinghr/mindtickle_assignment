@@ -1,0 +1,35 @@
+package assignment.mindtickle;
+
+import org.testng.Assert;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
+
+import mt.qa.base.TestBase;
+import mt.qa.pages.ContentHomePage;
+import mt.qa.pages.CreateNewCoursePage;
+import mt.qa.pages.LoginPage;
+
+public class ContentHomePageTest extends TestBase
+{
+	public ContentHomePageTest() 
+	{
+		super();
+	}
+	LoginPage lp;
+	CreateNewCoursePage coursepage;
+
+	@BeforeSuite
+	public void launchApp()
+	{
+		launchBrowser();
+		lp=new LoginPage();
+	}
+
+	
+	@AfterSuite
+	public void closure()
+	{
+		driver.quit();
+	}
+}

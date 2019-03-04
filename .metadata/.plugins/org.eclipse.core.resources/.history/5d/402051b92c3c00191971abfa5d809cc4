@@ -1,0 +1,38 @@
+package mt.qa.base;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestBase 
+{
+	public static WebDriver driver;
+	public static Properties prop;
+	
+	public TestBase() throws IOException
+	{
+		prop=new Properties();
+	FileInputStream file = new FileInputStream("D:\\mindtickle_assignment\\mindtickle\\src\\main\\java\\mt\\qa\\config\\config1.properties");
+	prop.load(file);
+	}
+	
+	public static void launchBrowser()
+	{
+		System.setProperty("webdriver.chrome.driver", "D:\\mindtickle_assignment\\mindtickle\\Drivers\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+
+		driver.get(prop.getProperty("url"));
+		//driver.get("https://admin.mindtickle.com/");
+		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+
+	}
+	
+	
+	
+}

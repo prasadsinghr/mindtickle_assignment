@@ -1,0 +1,15 @@
+package mt.qa.pages;
+
+import org.openqa.selenium.support.PageFactory;
+
+import mt.qa.base.TestBase;
+
+public class EditCourseTopicPage extends TestBase
+{
+
+	public EditCourseTopicPage()
+	{
+	PageFactory.initElements(driver, this);	
+	}
+
+}

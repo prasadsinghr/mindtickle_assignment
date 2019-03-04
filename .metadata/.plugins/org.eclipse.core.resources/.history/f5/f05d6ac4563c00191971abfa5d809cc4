@@ -1,0 +1,49 @@
+package assignment.mindtickle;
+
+import org.testng.Assert;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
+
+import mt.qa.base.TestBase;
+import mt.qa.pages.ContentHomePage;
+import mt.qa.pages.CreateNewCoursePage;
+import mt.qa.pages.LoginPage;
+
+public class ContentHomePageTest extends TestBase
+{
+	public ContentHomePageTest() 
+	{
+		super();
+	}
+	LoginPage lp=new LoginPage();
+	ContentHomePage homepage;
+	CreateNewCoursePage cnewp;
+	
+	@BeforeSuite
+	public void loginToApp()
+	{
+		launchBrowser();
+		homepage=lp.login(prop.getProperty("username"), prop.getProperty("password"));
+		
+	}
+
+	@Test(priority=1)
+	public void validateHomePageTitle() 
+	{
+		String title = homepage.homePageTitle();
+		Assert.assertEquals(title, "Content Home","Invalid Home Page title");
+	}
+
+	@Test(priority=2)
+	public void createNewCourse()
+	{
+		cnewp =homepage.createCourse();
+	}
+	
+//	@AfterSuite
+//	public void closure()
+//	{
+//		driver.quit();
+//	}
+}

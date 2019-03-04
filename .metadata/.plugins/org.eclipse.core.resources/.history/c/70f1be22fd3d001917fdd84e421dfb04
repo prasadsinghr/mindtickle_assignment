@@ -1,0 +1,62 @@
+package assignment.mindtickle;
+
+import org.testng.Assert;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import mt.qa.base.TestBase;
+import mt.qa.pages.ContentHomePage;
+import mt.qa.pages.CreateNewCoursePage;
+import mt.qa.pages.CreateTopicAndPublishPage;
+import mt.qa.pages.LoginPage;
+import mt.qa.util.CustomeListeners;
+import mt.qa.util.TestUtil;
+
+@Listeners(CustomeListeners.class)
+public class CreateNewCourseTest extends TestBase
+{
+	LoginPage lp;
+	ContentHomePage homepage;
+	CreateNewCoursePage createpage;
+	CreateTopicAndPublishPage ecp;
+	
+	@BeforeSuite
+	public void setUp()
+	{
+		launchBrowser();
+		lp=new LoginPage();
+		homepage=lp.login(prop.getProperty("username"), prop.getProperty("password"));
+		createpage =homepage.createCourse();
+	}
+
+	@Test(priority=1)
+	public void validateCreateNewCoursePage() 
+	{
+		String title = createpage.createCoursePageheader();
+		Assert.assertEquals(title, "Create New Course","Invalid create couser page header");
+	}
+
+	@Test(priority=2,dataProvider="dataProviderMethod")
+	public void createNewCourse(String Header,String descriptions,String Series) throws InterruptedException
+	{
+		ecp=createpage.createCourse(Header,descriptions,Series);
+		Assert.assertTrue(ecp.validateEle(), "names are not matching");
+
+	}
+	
+	@DataProvider
+	public Object[][] dataProviderMethod()
+	{
+		Object[][] data = TestUtil.getTestData("Create_course");
+		return data;
+	}
+//	@AfterSuite
+//	public void closure()
+//	{
+//		driver.quit();
+//	}
+	
+	
+}

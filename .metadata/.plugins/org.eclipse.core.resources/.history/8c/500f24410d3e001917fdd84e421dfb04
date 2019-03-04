@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="mindtickle assignment">
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="assignment.mindtickle.LoginPageTest"/>
+      <class name="assignment.mindtickle.ContentHomePageTest"/>
+      <class name="assignment.mindtickle.CreateNewCourseTest"/>
+      <class name="assignment.mindtickle.CreateTopicPageTest"/>
+      <class name="assignment.mindtickle.EditCourseTopicPageTest"/>
+      <class name="assignment.mindtickle.AddLearningContentPageTest"/>
+      <class name="assignment.mindtickle.PublishCourseTest"/>
+      <class name="assignment.mindtickle.InviteLearersPageTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

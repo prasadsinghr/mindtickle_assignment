@@ -1,0 +1,15 @@
+package mt.qa.util;
+
+import java.io.IOException;
+
+import mt.qa.base.TestBase;
+
+public class TestUtil extends TestBase
+{
+
+	public TestUtil() throws IOException {
+		super();
+		
+	}
+
+}

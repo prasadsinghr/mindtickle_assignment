@@ -1,0 +1,48 @@
+package mt.qa.pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import mt.qa.base.TestBase;
+
+public class CreateTopicPage extends TestBase
+{
+	public CreateTopicPage()
+	{
+	PageFactory.initElements(driver, this);	
+	}
+
+	@FindBy(xpath="//div[@class='topicDiv add addModular pos_abs']")
+	private WebElement clicktoaddtopic;
+
+	@FindBy(xpath="//textarea[@class='display_N marginL6 editArea']")
+	private WebElement textareatoaddtopic;
+
+	@FindBy(xpath="//span[text()='Publish']")
+	private	WebElement publish;
+	
+	 
+	@FindBy(xpath="//div[@class='btn_0072bc_30 F13 yesBtnTxt floatL paddingL30 paddingR30']")
+	private	WebElement confirmToPublish;
+	//div[text()='OK']
+	
+	
+	@FindBy(xpath="//div[@class='btn_0072bc_30 F13 paddingL30 paddingR30 okbtn']")
+	private	WebElement oktn;
+	
+	public void addCourse(String Topicname) throws InterruptedException
+	{
+		System.out.println(Topicname);
+		clicktoaddtopic.click();
+		Thread.sleep(1000);
+		textareatoaddtopic.sendKeys(Topicname);
+	}
+	public void publishcourse()
+	{
+		publish.click();
+		confirmToPublish.click();
+		oktn.click();	
+	}
+	
+}

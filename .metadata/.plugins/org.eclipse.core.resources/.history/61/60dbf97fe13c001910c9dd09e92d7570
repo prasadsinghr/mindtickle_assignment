@@ -1,0 +1,45 @@
+package assignment.mindtickle;
+
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
+
+import mt.qa.base.TestBase;
+import mt.qa.pages.ContentHomePage;
+import mt.qa.pages.CreateNewCoursePage;
+import mt.qa.pages.EditCoursePage;
+import mt.qa.pages.LoginPage;
+
+public class EditCoursePageTest extends TestBase
+{
+	LoginPage lp;
+	ContentHomePage homepage;
+	CreateNewCoursePage createpage;
+	EditCoursePage ecp;
+	
+	@BeforeSuite
+	public void setUp()
+	{
+		launchBrowser();
+		lp=new LoginPage();
+		homepage=lp.login(prop.getProperty("username"), prop.getProperty("password"));
+		createpage =homepage.createCourse();
+	}
+
+@Test
+public void addTopic()
+{
+	ecp.addCourse("topic name");
+}
+
+public void editcourse()
+{
+	ecp.courseEditOptins("Add / Edit Content");
+}	
+//	@AfterSuite
+//	public void closure()
+//	{
+//		driver.quit();
+//	}
+	
+	
+}

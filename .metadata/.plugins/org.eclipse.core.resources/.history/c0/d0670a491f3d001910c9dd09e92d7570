@@ -1,0 +1,8 @@
+package assignment.mindtickle;
+
+import mt.qa.base.TestBase;
+
+public class AddLearningContentPageTest extends TestBase
+{
+
+}

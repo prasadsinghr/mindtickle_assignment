@@ -1,0 +1,19 @@
+package mt.qa.pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import bsh.This;
+import mt.qa.base.TestBase;
+
+public class LoginPage extends TestBase
+{
+//try to make this global
+	public LoginPage()
+	{
+		PageFactory.initElements(driver, this);	
+	}	
+	@FindBy(xpath="//input[@id='loginEmail']")
+	WebElement username;
+}

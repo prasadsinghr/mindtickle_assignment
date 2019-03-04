@@ -1,0 +1,43 @@
+package assignment.mindtickle;
+
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import mt.qa.base.TestBase;
+import mt.qa.pages.LoginPage;
+
+public class LoginPageTest extends TestBase
+{
+	public LoginPageTest() 
+	{
+		super();
+	}
+	LoginPage lp=new LoginPage();
+	ContentHomePage chp = new ContentHomePage();
+	@BeforeMethod
+	public void launchApp()
+	{
+		launchBrowser();
+	}
+
+	@Test(priority=1)
+	public void validatePageTitle()
+	{
+		String title = lp.loginPageTitle();
+		Assert.assertEquals(title,"Sign In | MindTickle","Invalid login page title");
+	}
+		
+	@Test(priority=2)
+	public void loginApp()
+	{
+lp.login(prop.getProperty("username"), prop.getProperty("password"));
+	}
+
+	@AfterMethod
+	public void closure()
+	{
+		driver.quit();
+	}
+}

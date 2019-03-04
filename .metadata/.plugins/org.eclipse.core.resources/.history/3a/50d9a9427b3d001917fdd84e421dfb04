@@ -1,0 +1,24 @@
+package mt.qa.pages;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import mt.qa.base.TestBase;
+
+public class InviteToLearnerPage extends TestBase
+{
+	public InviteToLearnerPage()
+	{
+		PageFactory.initElements(driver,this);
+	}
+	
+	
+	
+	
+		
+		
+
+
+}

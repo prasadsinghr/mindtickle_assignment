@@ -1,0 +1,39 @@
+package mt.qa.pages;
+
+import java.io.IOException;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class AddLearningContentPage 
+{
+	
+	public AddLearningContentPage()
+	{
+		PageFactory.initElements(driver, this);
+	}
+
+@FindBy(xpath="//div[@class='floatL colorcc F13 marginL7 addText'][text()='Add Content, Questions and Polls']")
+private WebElement addcontent_que_polls;
+
+@FindBy(xpath="//div[@class='F18 marginB5'][text()='Upload Content']")
+private WebElement uploadcontent;
+
+
+@FindBy(xpath="//div[@class='learningContentTypeDummy margin0_auto']")
+private WebElement dropfiles;
+	
+@FindBy(xpath="//div[@class='upload_label'][text()='Upload from Computer']")
+WebElement uploadfrompc;
+
+public void addLearingContent() throws IOException
+{
+	addcontent_que_polls.click();
+	uploadcontent.click();
+	dropfiles.click();
+	uploadfrompc.click();
+	
+	Runtime.getRuntime().exec("D:\\mindtickle_assignment\\mindtickle\\AutoIT\\FileUpload.exe");
+}
+}

@@ -1,0 +1,12 @@
+package mt.qa.pages;
+
+public class AddContentPage {
+
+	//div[@class='floatL colorcc F13 marginL7 addText'][text()='Add Content, Questions and Polls']
+	
+	//div[@class='F18 marginB5'][text()='Upload Content']
+	
+	//div[@class='learningContentTypeDummy margin0_auto']
+	
+	//div[@class='upload_label'][text()='Upload from Computer']
+}

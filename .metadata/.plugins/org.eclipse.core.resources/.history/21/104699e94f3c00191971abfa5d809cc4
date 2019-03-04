@@ -1,0 +1,10 @@
+package mt.qa.pages;
+
+import mt.qa.base.TestBase;
+
+public class ContentHomePage extends TestBase
+{
+
+	
+	
+}

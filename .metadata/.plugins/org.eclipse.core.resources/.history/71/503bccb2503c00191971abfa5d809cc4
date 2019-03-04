@@ -1,0 +1,22 @@
+package mt.qa.pages;
+
+import org.openqa.selenium.support.PageFactory;
+
+import mt.qa.base.TestBase;
+
+public class ContentHomePage extends TestBase
+{
+
+	public ContentHomePage()
+	{
+	PageFactory.initElements(driver, this);	
+	}
+	
+	
+	
+	public String homePageTitle()
+	{
+	String Htitle=driver.getTitle();
+	return Htitle;
+	}
+}

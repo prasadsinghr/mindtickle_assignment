@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="assignment.mindtickle.ContentHomePageTest">
+        <methods>
+          <include name="setUp"/>
+          <include name="openCreateNewCoursePage"/>
+          <include name="validateHomePageTitle"/>
+          <include name="closure"/>
+        </methods>
+      </class> <!-- assignment.mindtickle.ContentHomePageTest -->
+      <class name="assignment.mindtickle.PublishCourseTest">
+        <methods>
+          <include name="setUp"/>
+          <include name="publishCourse"/>
+          <include name="closure"/>
+        </methods>
+      </class> <!-- assignment.mindtickle.PublishCourseTest -->
+      <class name="assignment.mindtickle.EditCourseTopicPageTest">
+        <methods>
+          <include name="setUp"/>
+          <include name="closure"/>
+          <include name="editTopic"/>
+        </methods>
+      </class> <!-- assignment.mindtickle.EditCourseTopicPageTest -->
+      <class name="assignment.mindtickle.CreateTopicPageTest">
+        <methods>
+          <include name="createTopic"/>
+          <include name="validatePageTitle"/>
+          <include name="closure"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- assignment.mindtickle.CreateTopicPageTest -->
+      <class name="assignment.mindtickle.LoginPageTest">
+        <methods>
+          <include name="launchApp"/>
+          <include name="loginTest"/>
+          <include name="validatePageTitleTest"/>
+          <include name="closure"/>
+        </methods>
+      </class> <!-- assignment.mindtickle.LoginPageTest -->
+      <class name="assignment.mindtickle.CreateNewCourseTest">
+        <methods>
+          <include name="setUp"/>
+          <include name="createNewCourse"/>
+          <include name="validateCreateNewCoursePage"/>
+          <include name="closure"/>
+        </methods>
+      </class> <!-- assignment.mindtickle.CreateNewCourseTest -->
+      <class name="assignment.mindtickle.InviteLearersPageTest">
+        <methods>
+          <include name="closure"/>
+          <include name="setUp"/>
+          <include name="inviteLearner"/>
+        </methods>
+      </class> <!-- assignment.mindtickle.InviteLearersPageTest -->
+      <class name="assignment.mindtickle.AddLearningContentPageTest">
+        <methods>
+          <include name="validateHeader"/>
+          <include name="addLearningContent"/>
+          <include name="setUp"/>
+          <include name="closure"/>
+        </methods>
+      </class> <!-- assignment.mindtickle.AddLearningContentPageTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

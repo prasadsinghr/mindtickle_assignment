@@ -1,0 +1,11 @@
+package assignment.mindtickle;
+
+import mt.qa.base.TestBase;
+
+public class CreateNewCourseTest extends TestBase
+{
+
+	
+	
+	
+}

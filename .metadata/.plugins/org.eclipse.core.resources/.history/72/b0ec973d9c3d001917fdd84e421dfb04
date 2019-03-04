@@ -1,0 +1,58 @@
+package assignment.mindtickle;
+
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import mt.qa.base.TestBase;
+import mt.qa.pages.ContentHomePage;
+import mt.qa.pages.CreateNewCoursePage;
+import mt.qa.pages.CreateTopicPage;
+import mt.qa.pages.LoginPage;
+import mt.qa.util.TestUtil;
+
+public class CreateTopicPageTest extends TestBase
+{
+	LoginPage lp;
+	ContentHomePage homepage;
+	CreateNewCoursePage createpage;
+	CreateTopicPage ecp;
+	
+	@BeforeSuite()
+	public void setUp()
+	{
+		launchBrowser();
+		lp=new LoginPage();
+		homepage=lp.login(prop.getProperty("username"), prop.getProperty("password"));
+		createpage =homepage.createCourse();
+		ecp=new CreateTopicPage();
+}
+
+	@Test
+	public void validatePageTitle()
+	{
+		
+	}
+	
+@Test(priority=1,dataProvider="addEditDataProviderMethod")
+public void createTopic(String Header,String descriptions,String Series, String Topic_name) throws InterruptedException
+{
+	//System.out.println(Topic_name);
+	ecp=createpage.createCourse(Header,descriptions,Series);
+	ecp.addCourse(Topic_name);
+}
+@DataProvider
+public Object[][] addEditDataProviderMethod()
+{
+	Object[][] data = TestUtil.getTestData("Add_course");
+	return data;
+}
+
+//	@AfterSuite
+//	public void closure()
+//	{
+//		driver.quit();
+//	}
+	
+	
+}

@@ -1,0 +1,51 @@
+package assignment.mindtickle;
+import org.testng.Assert;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import mt.qa.base.TestBase;
+import mt.qa.pages.ContentHomePage;
+import mt.qa.pages.LoginPage;
+import mt.qa.util.CustomeListeners;
+
+
+@Listeners(CustomeListeners.class)
+public class LoginPageTest extends TestBase
+{
+	public LoginPageTest() 
+	{
+		super();
+	}
+	LoginPage loginpage;
+	ContentHomePage homepage;
+
+	@BeforeSuite
+	public void launchApp()
+	{
+		launchBrowser();
+		loginpage=new LoginPage();
+	}
+
+	@Test(priority=1)
+	public void validatePageTitleTest()
+	{
+		String title = loginpage.loginPageTitle();
+		Assert.assertEquals(title,"Sign In | MindTickle","Invalid login page title");
+	}
+		
+	@Test(priority=2)
+	public void loginTest()
+	{
+	homepage=loginpage.login(prop.getProperty("username"), prop.getProperty("password"));
+	Assert.assertTrue(homepage.validateEle(), "names are not matching");
+	}
+
+	@AfterSuite
+	public void closure()
+	{
+		driver.quit();
+	}
+
+}

@@ -1,0 +1,53 @@
+package assignment.mindtickle;
+
+import org.testng.Assert;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import mt.qa.base.TestBase;
+import mt.qa.pages.ContentHomePage;
+import mt.qa.pages.CreateNewCoursePage;
+import mt.qa.pages.CreateTopicAndPublishPage;
+import mt.qa.pages.EditCourseTopicPage;
+import mt.qa.pages.LoginPage;
+import mt.qa.util.CustomeListeners;
+import mt.qa.util.TestUtil;
+
+@Listeners(CustomeListeners.class)
+public class EditCourseTopicPageTest extends TestBase
+{
+	LoginPage loginpage;
+	ContentHomePage homepage;
+	CreateNewCoursePage createcourse;
+	CreateTopicAndPublishPage createtopicpublish;
+	EditCourseTopicPage editcourse;
+	
+	@BeforeSuite()
+	public void setUp()
+	{
+		launchBrowser();
+		loginpage=new LoginPage();
+		homepage=loginpage.login(prop.getProperty("username"), prop.getProperty("password"));
+		createcourse =homepage.createCourse();
+		createtopicpublish=new CreateTopicAndPublishPage();
+		editcourse = new EditCourseTopicPage();
+	}
+
+	@Test(priority=1,dataProvider="addEditDataProviderMethod")
+	public void editTopic(String Header,String descriptions,String Series, String Topic_name) throws InterruptedException
+	{
+		createtopicpublish=createcourse.createCourse(Header,descriptions,Series);
+		createtopicpublish.addCourse(Topic_name);
+		Assert.assertTrue(editcourse.validateEle(), "names are not matching");
+		editcourse.contentClick();
+	}
+	@DataProvider
+	public Object[][] addEditDataProviderMethod()
+	{
+		Object[][] data = TestUtil.getTestData("Edit_course");
+		return data;
+	}
+	
+}

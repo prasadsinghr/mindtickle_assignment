@@ -1,0 +1,71 @@
+package mt.qa.pages;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import mt.qa.base.TestBase;
+
+public class InviteLearersPage extends TestBase
+{
+	public InviteLearersPage()
+	{
+		PageFactory.initElements(driver, this);
+	}
+	
+	@FindBy(xpath="//div[@class='inviteText'][text()='Invite Learners']")
+	private	WebElement invitebutton;
+	
+	@FindBy(xpath="//div[text()='To Course Only']")
+	private	WebElement tocouseronly;
+	
+	@FindBy(xpath="//li[@class='invite_to_series_course_subdd bg_f7 display_N']")
+	private	List<WebElement> listofcourseonly;
+	
+	@FindBy(xpath="//input[@id='newEmailField']")
+	private	WebElement emailid;
+	
+
+	@FindBy(xpath="//input[@id='newNameField']")
+	private	WebElement name;
+	
+
+	@FindBy(xpath="//div[text()='Add to List']")
+	private	WebElement addtolistbtn;
+	
+	@FindBy(xpath="//div[@class='floatL btn_0072bc F13 lineHeight30 borderR15 paddingL25 paddingR25 addAndInviteAll'][text()='Add & Invite All']")
+	private	WebElement addinviteallbtn;
+	
+	@FindBy(xpath="")
+	private WebElement invitedusers;
+	
+	public String validateinvitedusers(String validatename)
+	{
+		String validatedname=(driver.findElement(By.xpath(""))).getText().toString()
+//		return String validatedname;
+	}
+	
+	public void inviteleaners(String whome,String email,String namef)
+	{
+		invitebutton.click();
+		tocouseronly.click();
+		for(int i=0;i<listofcourseonly.size();i++)
+		{
+			System.out.println(listofcourseonly.get(i).getText());
+			if(listofcourseonly.get(i).getText().contains(whome))
+			{
+				listofcourseonly.get(i).click();
+			}
+		}
+		
+		emailid.sendKeys(email);
+		name.sendKeys(namef);
+		addtolistbtn.click();
+		addinviteallbtn.click();
+		
+	}
+
+}

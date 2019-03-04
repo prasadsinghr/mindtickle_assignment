@@ -1,0 +1,49 @@
+package assignment.mindtickle;
+
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import mt.qa.base.TestBase;
+import mt.qa.pages.ContentHomePage;
+import mt.qa.pages.CreateNewCoursePage;
+import mt.qa.pages.CreateTopicPage;
+import mt.qa.pages.EditCourseTopicPage;
+import mt.qa.pages.LoginPage;
+import mt.qa.util.TestUtil;
+
+public class EditCourseTopicPageTest extends TestBase
+{
+	LoginPage lp;
+	ContentHomePage homepage;
+	CreateNewCoursePage createpage;
+	CreateTopicPage ctp;
+	EditCourseTopicPage ectp;
+	@BeforeSuite()
+	public void setUp()
+	{
+		launchBrowser();
+		lp=new LoginPage();
+		homepage=lp.login(prop.getProperty("username"), prop.getProperty("password"));
+		createpage =homepage.createCourse();
+		ctp=new CreateTopicPage();
+		ectp = new EditCourseTopicPage();
+	}
+
+	@Test(priority=1,dataProvider="addEditDataProviderMethod")
+	public void editTopic(String Header,String descriptions,String Series, String Topic_name) throws InterruptedException
+	{
+		ctp=createpage.createCourse(Header,descriptions,Series);
+		ctp.addCourse(Topic_name);
+		Thread.sleep(1000);
+//		ectp.courseEditOptins("Add / Edit Content");
+		ectp.courseEditOptins();
+	}
+	@DataProvider
+	public Object[][] addEditDataProviderMethod()
+	{
+		Object[][] data = TestUtil.getTestData("Edit_course");
+		return data;
+	}
+	
+}

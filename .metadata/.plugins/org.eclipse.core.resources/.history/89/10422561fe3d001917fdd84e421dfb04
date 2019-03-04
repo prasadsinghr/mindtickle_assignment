@@ -1,0 +1,51 @@
+package assignment.mindtickle;
+
+import org.testng.Assert;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import mt.qa.base.TestBase;
+import mt.qa.pages.ContentHomePage;
+import mt.qa.pages.CreateNewCoursePage;
+import mt.qa.pages.LoginPage;
+import mt.qa.util.CustomeListeners;
+
+@Listeners(CustomeListeners.class)
+public class ContentHomePageTest extends TestBase
+{
+	
+	LoginPage loginpage;
+	ContentHomePage homepage;
+	CreateNewCoursePage createpage;
+	
+	@BeforeSuite
+	public void setUp()
+	{
+		launchBrowser();
+		loginpage=new LoginPage();
+		homepage=loginpage.login(prop.getProperty("username"), prop.getProperty("password"));
+		
+	}
+
+	@Test(priority=1)
+	public void validateHomePageTitle() 
+	{
+		String title = homepage.homePageTitle();
+		Assert.assertEquals(title, "Content Home","Invalid Home Page title");
+	}
+
+	@Test(priority=2)
+	public void openCreateNewCoursePage()
+	{
+		createpage =homepage.createCourse();
+		Assert.assertTrue(createpage.validateEle(), "names are not matching");
+
+	}
+	
+//	@AfterSuite
+//	public void closure()
+//	{
+//		driver.quit();
+//	}
+}

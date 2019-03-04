@@ -1,0 +1,21 @@
+package mt.qa.pages;
+
+import org.openqa.selenium.support.PageFactory;
+
+import mt.qa.base.TestBase;
+
+public class InviteToLearnerPage extends TestBase
+{
+	public InviteToLearnerPage()
+	{
+		PageFactory.initElements(driver,this);
+	}
+	
+	
+	
+	
+		
+		
+
+
+}

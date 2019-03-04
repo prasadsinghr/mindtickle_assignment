@@ -1,0 +1,45 @@
+package mt.qa.pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import mt.qa.base.TestBase;
+
+public class EditCourseTopicPage extends TestBase
+{
+
+	public EditCourseTopicPage()
+	{
+	PageFactory.initElements(driver, this);	
+	}
+
+	@FindBy(xpath="//div[@class='floatL color99 F13'][contains(text(),'Content')] ")
+	private WebElement editmenu;
+	
+	public void contentClick()
+	{
+	Actions action = new Actions(driver);
+	action.doubleClick(editmenu).perform();
+	//action.click().build().perform();
+	
+	//	editmenu.click();
+		//editmenu.click();
+	}	
+			/*
+	//public void courseEditOptins(String editoption)
+	public void courseEditOptins()
+		{
+		System.out.println("to select");
+		for(int i=0;i<options.size();i++)
+		{
+			if(options.get(i).getText().contains("Add / Edit Content"))
+			{
+				options.get(i).click();
+			}
+		}
+		
+	}
+*/
+}

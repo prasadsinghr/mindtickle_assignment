@@ -1,0 +1,9 @@
+package mt.qa.pages;
+
+import mt.qa.base.TestBase;
+
+public class LoginPage extends TestBase
+{
+
+	
+}

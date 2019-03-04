@@ -1,0 +1,47 @@
+package assignment.mindtickle;
+
+import org.testng.Assert;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
+
+import mt.qa.base.TestBase;
+import mt.qa.pages.ContentHomePage;
+import mt.qa.pages.CreateNewCoursePage;
+import mt.qa.pages.LoginPage;
+
+public class CreateNewCourseTest extends TestBase
+{
+	LoginPage lp;
+	ContentHomePage homepage;
+	CreateNewCoursePage createpage;
+	
+	@BeforeSuite
+	public void setUp()
+	{
+		launchBrowser();
+		lp=new LoginPage();
+		homepage=lp.login(prop.getProperty("username"), prop.getProperty("password"));
+		createpage =homepage.createCourse();
+	}
+
+	@Test(priority=1)
+	public void validateCreateNewCoursePage() 
+	{
+		String title = createpage.createCoursePageheader();
+		Assert.assertEquals(title, "Create New Course","Invalid create couser page header");
+	}
+
+	@Test(priority=2)
+	public void createNewCourse()
+	{
+		createpage.createCourse("Header", "descriptions","MCQ");
+	}
+	
+//	@AfterSuite
+//	public void closure()
+//	{
+//		driver.quit();
+//	}
+	
+	
+}

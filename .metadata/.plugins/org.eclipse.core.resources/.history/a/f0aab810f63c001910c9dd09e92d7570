@@ -1,0 +1,37 @@
+package mt.qa.pages;
+
+import java.util.List;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import mt.qa.base.TestBase;
+
+public class EditCourseTopicPage extends TestBase
+{
+
+	public EditCourseTopicPage()
+	{
+	PageFactory.initElements(driver, this);	
+	}
+
+	@FindBy(xpath="//div[@class='menu_14_12 marginT4']")
+	private WebElement editmenu;
+
+	@FindBy(xpath="//div[@class='paddingT5 marginL8 marginR8']//ul")
+	private List<WebElement> editlistoptions;
+	
+	public void courseEditOptins(String editoption)
+	{
+		editmenu.click();
+//		for(WebElement eopt : editlistoptions)
+//		{
+//			if(eopt.getText().toString().contains(editoption))
+//			{
+//				eopt.click();
+//			}
+//		}
+	}
+
+}

@@ -1,0 +1,91 @@
+package mt.qa.pages;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import mt.qa.base.TestBase;
+import mt.qa.util.TestUtil;
+
+public class CreateNewCoursePage extends TestBase
+{
+
+	public CreateNewCoursePage()
+	{
+		PageFactory.initElements(driver, this);	
+	}
+
+@FindBy(xpath="//div[text()='Create New Course']")
+private WebElement createcoursepageheader;
+
+
+@FindBy(xpath="//input[@id='trngName']")
+private WebElement trainingname;
+
+@FindBy(xpath="//body[@id='tinymce']")
+private WebElement trainingdesc;
+
+@FindBy(xpath="//a[@class='boxSizing_cb']")
+private WebElement selectseries;
+
+@FindBy(xpath="//div[2][text()='Create']")
+private WebElement createbutton;
+
+@FindBy(xpath="//dl[@class='sortDD pos_rel floatL seriesDD']/dd/ul")
+private List<WebElement> options;
+
+
+public String createCoursePageheader()
+{
+	String ctitle= createcoursepageheader.getText();
+	return ctitle;
+}
+
+public void selectseriesindropdown(String select)
+{
+	
+for(WebElement sel : options)
+{
+if(sel.equals(select))
+{
+	//li/a[text()='MCQ']
+	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li/a[text()='"+select+"']")));
+driver.findElement(By.xpath("//li/a[text()='"+select+"']")).click();	
+}
+}
+
+}
+
+
+public EditCoursePage createCourse(String header,String desc,String select)
+{
+	trainingname.sendKeys(header);
+	TestUtil.switchToFrame();
+	trainingdesc.sendKeys(desc);
+driver.switchTo().defaultContent();
+	//	TestUtil.switchToFrame2();
+	selectseries.click();
+//	selectseriesindropdown(sel1);
+	for(WebElement sel : options)
+	{
+		String a=sel.getText();
+		System.out.println("outpt-"+a);
+		if(a.equals(select))
+		{
+		//li/a[text()='MCQ']
+			System.out.println("please click on elemet");
+			driver.findElement(By.xpath("//li/a[text()='"+select+"']")).click();	
+		}
+	}
+		createbutton.click();
+		return new EditCoursePage();
+}
+
+
+
+
+}

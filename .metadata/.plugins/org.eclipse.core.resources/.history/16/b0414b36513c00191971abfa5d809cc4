@@ -1,0 +1,30 @@
+package mt.qa.pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import mt.qa.base.TestBase;
+
+public class ContentHomePage extends TestBase
+{
+
+	public ContentHomePage()
+	{
+	PageFactory.initElements(driver, this);	
+	}
+	@FindBy(xpath="//div[text()='Create']")
+	WebElement createcourse;
+	
+	
+	public String homePageTitle()
+	{
+	String Htitle=driver.getTitle();
+	return Htitle;
+	}
+	
+	public void clickOnCreateCourse()
+	{
+		createcourse.click();	
+	}
+}

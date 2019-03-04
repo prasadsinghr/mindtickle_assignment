@@ -1,0 +1,60 @@
+package assignment.mindtickle;
+
+import java.io.IOException;
+
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import mt.qa.base.TestBase;
+import mt.qa.pages.AddLearningContentPage;
+import mt.qa.pages.ContentHomePage;
+import mt.qa.pages.CreateNewCoursePage;
+import mt.qa.pages.CreateTopicPage;
+import mt.qa.pages.EditCourseTopicPage;
+import mt.qa.pages.LoginPage;
+import mt.qa.util.TestUtil;
+
+public class PublishCourseTest extends TestBase
+{
+	LoginPage lp;
+	ContentHomePage homepage;
+	CreateNewCoursePage createpage;
+	CreateTopicPage ctp;
+	EditCourseTopicPage ectp;
+	AddLearningContentPage alc;
+	
+	@BeforeSuite()
+	public void setUp()
+	{
+		launchBrowser();
+		lp=new LoginPage();
+		homepage=lp.login(prop.getProperty("username"), prop.getProperty("password"));
+		createpage =homepage.createCourse();
+		ctp=new CreateTopicPage();
+		ectp = new EditCourseTopicPage();
+		alc= new AddLearningContentPage();
+	
+	}
+
+	@Test(priority=1,dataProvider="publishCourseDataProviderMethod")
+	public void publishCourse(String Header,String descriptions,String Series, String Topic_name,String filepath) throws InterruptedException, IOException
+	{
+		ctp=createpage.createCourse(Header,descriptions,Series);
+		ctp.addCourse(Topic_name);
+		ectp.contentClick();
+		alc.addLearingContent(filepath);
+		alc.back();
+		ctp.publishcourse();
+	//ctp.okbtn();
+//	ctp.okbtn();
+	}
+	
+	@DataProvider
+	public Object[][] publishCourseDataProviderMethod()
+	{
+		Object[][] data = TestUtil.getTestData("Add_LearingContent");
+		return data;
+	}
+
+}

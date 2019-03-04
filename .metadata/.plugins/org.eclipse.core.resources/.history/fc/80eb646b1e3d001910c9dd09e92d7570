@@ -1,0 +1,22 @@
+package mt.qa.pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class AddContentPage 
+{
+
+@FindBy(xpath="//div[@class='floatL colorcc F13 marginL7 addText'][text()='Add Content, Questions and Polls']")
+WebElement addcontent_que_polls;
+
+@FindBy(xpath="//div[@class='F18 marginB5'][text()='Upload Content']")
+WebElement
+
+
+@FindBy(xpath="//div[@class='learningContentTypeDummy margin0_auto']")
+WebElement
+	
+@FindBy(xpath="	//div[@class='upload_label'][text()='Upload from Computer']")
+WebElement
+
+}

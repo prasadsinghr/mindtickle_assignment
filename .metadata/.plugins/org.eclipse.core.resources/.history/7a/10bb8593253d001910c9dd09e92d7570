@@ -1,0 +1,27 @@
+package mt.qa.pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import bsh.This;
+import mt.qa.base.TestBase;
+
+public class InviteToLearnerPage extends TestBase
+{
+	public InviteToLearnerPage()
+	{
+		PageFactory.initElements(driver,this);
+	}
+	
+	@FindBy(xpath="//div[@class='floatL colorff_F14 lineHeight48 marginL5 marginT16 display_N headerContentEditBackBtn doneBtn backArrow_10_16_fff cursor tooltip_bottom_left']")
+	private	WebElement backbutton;
+
+	@FindBy(xpath="//span[text()='Publish']")
+	private	WebElement backbutton;
+	
+	
+
+
+}
