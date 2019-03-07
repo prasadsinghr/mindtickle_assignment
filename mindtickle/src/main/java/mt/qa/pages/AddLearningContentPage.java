@@ -4,19 +4,12 @@ import java.io.IOException;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import mt.qa.base.TestBase;
 import mt.qa.util.TestUtil;
 
 public class AddLearningContentPage extends TestBase
 {
-	
-	public AddLearningContentPage()
-	{
-		PageFactory.initElements(driver, this);
-	}
-
 	@FindBy(xpath="//div[@class='textalign_C color36 F18 lineHeight28 borderB35_transparent'][text()='Add Content, Questions and Polls']")
 	private WebElement header;
 		

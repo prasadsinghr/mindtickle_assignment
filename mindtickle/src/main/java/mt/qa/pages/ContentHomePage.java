@@ -2,7 +2,6 @@ package mt.qa.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import mt.qa.base.TestBase;
 import mt.qa.util.TestUtil;
@@ -10,11 +9,6 @@ import mt.qa.util.TestUtil;
 public class ContentHomePage extends TestBase
 {
 
-	public ContentHomePage()
-	{
-	PageFactory.initElements(driver, this);	
-	}
-	
 	@FindBy(xpath="//div[text()='Create']")
 	private WebElement createbutton;
 	

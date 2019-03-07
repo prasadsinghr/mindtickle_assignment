@@ -6,17 +6,12 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import mt.qa.base.TestBase;
 import mt.qa.util.TestUtil;
 
 public class InviteLearersPage extends TestBase
 {
-	public InviteLearersPage()
-	{
-		PageFactory.initElements(driver, this);
-	}
 	
 	@FindBy(xpath="//div[@class='inviteText'][text()='Invite Learners']")
 	private	WebElement invitebutton;

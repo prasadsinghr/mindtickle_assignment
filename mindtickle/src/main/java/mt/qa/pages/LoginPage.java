@@ -2,16 +2,12 @@ package mt.qa.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import mt.qa.base.TestBase;
 
 public class LoginPage extends TestBase
 {
-	public LoginPage()
-	{
-		PageFactory.initElements(driver, this);	
-	}	
+		
 	@FindBy(id="loginEmail")
 	private WebElement username;
 
