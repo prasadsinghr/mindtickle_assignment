@@ -8,7 +8,6 @@ import mt.qa.base.TestBase;
 
 public class LoginPage extends TestBase
 {
-//try to make this global
 	public LoginPage()
 	{
 		PageFactory.initElements(driver, this);	
